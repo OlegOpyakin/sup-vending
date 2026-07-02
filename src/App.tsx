@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sun, Moon, Wrench, Cpu,
   X, Mail, Send, ArrowUp, Users, Palette,
-  Anchor, Clock, Zap, Calendar, MapPin, Gauge, ShoppingBag, Leaf
+  Anchor, Clock, Zap, ShoppingBag, Leaf
 } from 'lucide-react';
 
 // ========================
