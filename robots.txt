@@ -7,4 +7,4 @@ User-agent: *
 Disallow:
 
 # Sitemap file
-Sitemap: https://smart-shadow.ru/sitemap.xml
+Sitemap: http://supvending.ru/sitemap.xml
