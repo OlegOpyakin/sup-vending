@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     react(),
     seoFiles({
-      siteUrl: 'https://smart-shadow.ru',
+      siteUrl: 'http://supvending.ru',
       generateSitemap: true,
       generateRobots: true,
     }),

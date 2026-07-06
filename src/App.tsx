@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sun, Moon, Wrench, Cpu,
   X, Mail, Send, ArrowUp, Users, Palette,
-  Anchor, Clock, Zap, ShoppingBag, Leaf
+  Clock, Zap, ShoppingBag, Leaf
 } from 'lucide-react';
 
 // ========================
@@ -15,7 +15,7 @@ const translations = {
     heroSubtitle: '24/7 autonomous SUP board rental. No staff. No waiting.',
     heroCta: 'Discover more',
     modalTitle: 'Discover more',
-    modalDescription: 'Our team is ready to show you how SUP Vending can transform your waterfront business.',
+    modalDescription: 'Our team is ready to show you how to add SUP boards to your beach.',
     email: 'Email',
     telegram: 'Telegram',
     responseTime: 'We typically respond within a few hours.',
@@ -30,20 +30,22 @@ const translations = {
     feature2Desc: 'Rent a board early morning or late night — whenever you want to go.',
     feature3Title: 'Solar Powered',
     feature3Desc: 'Self-sufficient station with solar panels and ultra-low-power smart locks.',
-    feature4Title: '10 Boards per Station',
-    feature4Desc: 'Each station holds 10 SUP boards, ready for instant rental.',
+    feature4Title: 'Autonomous Station',
+    feature4Desc: 'Operates without staff and holds 10 SUP boards, ready for rental at any moment.',
     problemTitle: 'The Problem We Solve',
     problemDesc: 'Traditional SUP rentals take 3-5 minutes per customer with paperwork and live instruction. During peak hours, queues reach 15-20 minutes. Rentals work only 10-12 hours a day — you can\'t get a board early morning or late night.',
-    problemStat1: '60% of people skip SUP rental because of long queues',
-    problemStat2: '15-20 min waiting time during peak hours',
-    problemStat3: 'Only 10-12 hours of operation per day',
+    problemStat1: '15-20 min waiting during peak hours',
+    problemStat2: 'Limited operating hours per day',
+    problemStat3: 'Quality depends on staff',
     teamTitle: 'Built by MIPT Engineers.',
     teamCaption: 'The SUP Vending Team',
     ivanRole: 'Business Analysis & Programming',
     konstantinRole: 'Chief Engineer',
     antonRole: 'Marketing, Sales & Clients',
     alexanderRole: 'UX/UI Design',
-    useCasesTitle: 'Where Water Meets Technology.',
+    useCasesTitle: 'Just one step to SUP.',
+    scanCaption: 'Scan',
+    rideCaption: 'Ride',
     moscow: 'Moscow Water Areas',
     beach: 'Beach & Resorts',
     footer: '© 2026 SUP Vending',
@@ -55,7 +57,7 @@ const translations = {
     heroSubtitle: 'Круглосуточная аренда SUP-бордов. Без персонала. Без очередей.',
     heroCta: 'Перейдём к делу?',
     modalTitle: 'Перейдём к делу?',
-    modalDescription: 'Наша команда готова показать, как SUP-вендинг преобразит ваш водный бизнес.',
+    modalDescription: 'Наша команда готова показать, как добавить на ваш пляж sup-борды.',
     email: 'Почта',
     telegram: 'Телеграм',
     responseTime: 'Обычно отвечаем в течение пары часов.',
@@ -70,20 +72,22 @@ const translations = {
     feature2Desc: 'Возьмите SUP рано утром или поздно вечером — когда вам удобно.',
     feature3Title: 'На солнечных батареях',
     feature3Desc: 'Автономная станция с солнечными панелями и сверхэкономичными замками.',
-    feature4Title: '10 досок на станции',
-    feature4Desc: 'Каждая станция вмещает 10 SUP-бордов, готовых к аренде в любой момент.',
+    feature4Title: 'Автономная станция',
+    feature4Desc: 'Работает без персонала и вмещает 10 SUP-бордов, готовых к аренде в любой момент.',
     problemTitle: 'Проблема, которую мы решаем',
     problemDesc: 'Традиционная аренда SUP занимает 3-5 минут на клиента из-за бумажных договоров и живого инструктажа. В часы пик очереди достигают 15-20 минут. Прокаты работают всего 10-12 часов в день — нельзя взять доску рано утром или поздно вечером.',
-    problemStat1: '60% людей отказываются от аренды SUP из-за долгих очередей',
-    problemStat2: '15-20 мин ожидания в часы пик',
-    problemStat3: 'Всего 10-12 часов работы в день',
+    problemStat1: '15-20 мин ожидания в часы пик',
+    problemStat2: 'Ограниченное время работы в день',
+    problemStat3: 'Зависимость качества от персонала',
     teamTitle: 'Создано инженерами МФТИ.',
     teamCaption: 'Команда SUP-вендинг',
     ivanRole: 'Бизнес-аналитика и разработка',
     konstantinRole: 'Главный инженер',
     antonRole: 'Маркетинг, продажи и клиенты',
     alexanderRole: 'Дизайн UX/UI',
-    useCasesTitle: 'Где вода встречается с технологиями.',
+    useCasesTitle: 'Всего один шаг до сапа.',
+    scanCaption: 'Сканируй',
+    rideCaption: 'Катайся',
     moscow: 'Акватории Москвы',
     beach: 'Пляжи и курорты',
     footer: '© 2026 SUP-вендинг',
@@ -326,27 +330,31 @@ const ScrollToTopButton = ({
 };
 
 // ========================
-//  SVG PADDLE (для прелоадера)
+//  НОВАЯ ИКОНКА ЛОДКИ (SUP-борд)
 // ========================
-const PaddleIcon = ({ className }: { className?: string }) => (
+const BoatIcon = ({ className }: { className?: string }) => (
   <svg
-    viewBox="0 0 100 100"
+    viewBox="-100 -100 200 200"
     className={className}
     fill="none"
     stroke="currentColor"
-    strokeWidth="4"
+    strokeWidth="6"
     strokeLinecap="round"
     strokeLinejoin="round"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <line x1="50" y1="10" x2="50" y2="70" stroke="currentColor" />
-    <ellipse cx="50" cy="82" rx="18" ry="12" stroke="currentColor" fill="currentColor" fillOpacity="0.2" />
-    <line x1="40" y1="18" x2="60" y2="18" stroke="currentColor" />
+    <path d="M -12 -85 L 12 -85 M 0 -85 L 0 60" />
+    <path d="M -20 -60 Q -55 -80 -25 0" />
+    <path d="M 20 -60 Q 55 -80 25 0" />
+    <path d="M -60 10 C -50 0, -40 20, -30 10 C -20 0, -10 20, 0 10 C 10 0, 20 20, 30 10 C 40 0, 50 20, 60 10" />
+    <path d="M -18 35 Q -35 65 0 95" />
+    <path d="M 18 35 Q 35 65 0 95" />
+    <path d="M 0 65 Q 15 65 14 85 Q 0 98 -14 85 Q -15 65 0 65" />
   </svg>
 );
 
 // ========================
-//      FEATURES SECTION (вместо Sticky)
+//      FEATURES SECTION
 // ========================
 const FeaturesSection = ({
   t,
@@ -355,11 +363,12 @@ const FeaturesSection = ({
   t: (key: keyof typeof translations['en']) => string;
   lang: 'en' | 'ru';
 }) => {
+  // Reorder: feature4 (Autonomous) first, then feature1, feature2, feature3
   const features = [
+    { icon: ShoppingBag, title: 'feature4Title', desc: 'feature4Desc' },
     { icon: Clock, title: 'feature1Title', desc: 'feature1Desc' },
     { icon: Zap, title: 'feature2Title', desc: 'feature2Desc' },
     { icon: Leaf, title: 'feature3Title', desc: 'feature3Desc' },
-    { icon: ShoppingBag, title: 'feature4Title', desc: 'feature4Desc' },
   ];
 
   return (
@@ -387,9 +396,9 @@ const FeaturesSection = ({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white dark:bg-black rounded-3xl p-8 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow"
+              className="bg-white dark:bg-black rounded-3xl p-8 border border-gray-200 dark:border-gray-800 hover:shadow-xl transition-shadow h-72 flex flex-col items-start"
             >
-              <div className="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+              <div className="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5 flex-shrink-0">
                 <feature.icon className="w-7 h-7" />
               </div>
               <AnimatePresence mode="wait">
@@ -411,7 +420,7 @@ const FeaturesSection = ({
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2, delay: 0.05 }}
-                  className="text-gray-600 dark:text-gray-400 leading-relaxed"
+                  className="text-gray-600 dark:text-gray-400 leading-relaxed flex-1"
                 >
                   {t(feature.desc as keyof typeof translations['en'])}
                 </motion.p>
@@ -435,9 +444,9 @@ const ProblemSection = ({
   lang: 'en' | 'ru';
 }) => {
   const stats = [
-    { label: 'problemStat1', icon: '😤' },
-    { label: 'problemStat2', icon: '⏱️' },
-    { label: 'problemStat3', icon: '🕐' },
+    { label: 'problemStat1', icon: '⏱️' },
+    { label: 'problemStat2', icon: '🌗' },
+    { label: 'problemStat3', icon: '🤷' },
   ];
 
   return (
@@ -456,18 +465,20 @@ const ProblemSection = ({
               {t('problemTitle')}
             </motion.h2>
           </AnimatePresence>
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={lang + 'problemDesc'}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, delay: 0.05 }}
-              className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto"
-            >
-              {t('problemDesc')}
-            </motion.p>
-          </AnimatePresence>
+          <div className="min-h-[120px] md:min-h-[100px] flex items-center justify-center">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={lang + 'problemDesc'}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3, delay: 0.05 }}
+                className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-3xl mx-auto"
+              >
+                {t('problemDesc')}
+              </motion.p>
+            </AnimatePresence>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -477,9 +488,9 @@ const ProblemSection = ({
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="bg-red-50 dark:bg-red-950/20 rounded-2xl p-6 text-center border border-red-100 dark:border-red-900/30"
+              className="bg-red-50 dark:bg-red-950/20 rounded-2xl p-6 text-center border border-red-100 dark:border-red-900/30 h-40 flex flex-col items-center justify-center"
             >
-              <div className="text-3xl mb-2">{stat.icon}</div>
+              <div className="text-3xl mb-2 flex-shrink-0">{stat.icon}</div>
               <AnimatePresence mode="wait">
                 <p
                   key={lang + stat.label}
@@ -512,8 +523,8 @@ const TeamCard = ({
   lang: 'en' | 'ru';
   image?: string;
 }) => (
-  <div className="h-full bg-gray-50 dark:bg-gray-900 rounded-3xl p-6 flex flex-col items-center text-center border border-gray-100 dark:border-gray-800">
-    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-2xl font-medium mb-4 overflow-hidden">
+  <div className="h-64 bg-gray-50 dark:bg-gray-900 rounded-3xl p-6 flex flex-col items-center justify-center text-center border border-gray-100 dark:border-gray-800">
+    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white text-2xl font-medium mb-4 overflow-hidden flex-shrink-0">
       {image ? (
         <img src={image} alt={name} className="w-full h-full object-cover" />
       ) : (
@@ -594,7 +605,7 @@ function App() {
               animate={{ rotate: 360 }}
               transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
             >
-              <PaddleIcon className="w-16 h-16 text-blue-600 dark:text-blue-400" />
+              <BoatIcon className="w-16 h-16 text-blue-600 dark:text-blue-400" />
             </motion.div>
             <AnimatePresence mode="wait">
               <motion.p
@@ -645,7 +656,7 @@ function App() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/sup-hero.jpg"
+            src="/images/girl.jpg"
             alt="SUP boarding"
             className="w-full h-full object-cover"
             onLoad={() => setHeroLoaded(true)}
@@ -655,7 +666,7 @@ function App() {
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-          <div className="min-h-[14rem] md:min-h-[18rem] mb-10">
+          <div className="min-h-[18rem] md:min-h-[24rem] mb-10 flex flex-col justify-center">
             <AnimatePresence mode="wait">
               <motion.h1
                 key={lang}
@@ -693,10 +704,10 @@ function App() {
         </div>
       </section>
 
-      {/* PROBLEM SECTION — новый блок */}
+      {/* PROBLEM SECTION */}
       <ProblemSection t={t} lang={lang} />
 
-      {/* FEATURES SECTION — вместо Sticky */}
+      {/* FEATURES SECTION */}
       <FeaturesSection t={t} lang={lang} />
 
       {/* Team Section */}
@@ -766,25 +777,25 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <div className="relative rounded-3xl overflow-hidden h-80 md:h-96 group">
               <img
-                src="/images/moscow-water.jpg"
-                alt="Moscow water areas"
+                src="images/qr_code.jpg"
+                alt="Scan QR code with phone"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop';
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop';
                 }}
               />
               <div className="absolute inset-0 bg-black/20 flex items-end p-8">
                 <div className="px-6 py-3 rounded-full bg-black/50 backdrop-blur-sm min-h-[3rem] flex items-center">
                   <AnimatePresence mode="wait">
                     <motion.h3
-                      key={lang + 'moscow'}
+                      key={lang + 'scan'}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.2 }}
                       className="text-3xl font-semibold text-white"
                     >
-                      {t('moscow')}
+                      {t('scanCaption')}
                     </motion.h3>
                   </AnimatePresence>
                 </div>
@@ -792,8 +803,8 @@ function App() {
             </div>
             <div className="relative rounded-3xl overflow-hidden h-80 md:h-96 group">
               <img
-                src="/images/beach-sup.jpg"
-                alt="Beach and resorts"
+                src="images/hero.jpg"
+                alt="Girl on SUP board"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&h=600&fit=crop';
@@ -803,14 +814,14 @@ function App() {
                 <div className="px-6 py-3 rounded-full bg-black/50 backdrop-blur-sm min-h-[3rem] flex items-center">
                   <AnimatePresence mode="wait">
                     <motion.h3
-                      key={lang + 'beach'}
+                      key={lang + 'ride'}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.2 }}
                       className="text-3xl font-semibold text-white"
                     >
-                      {t('beach')}
+                      {t('rideCaption')}
                     </motion.h3>
                   </AnimatePresence>
                 </div>
@@ -841,7 +852,7 @@ function App() {
       <footer className="py-12 px-6 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-black">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex items-center gap-4">
-            <Anchor className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
+            <BoatIcon className="w-5 h-5 text-gray-500 dark:text-gray-400 flex-shrink-0" />
             <AnimatePresence mode="wait">
               <span key={lang} className="text-gray-500 dark:text-gray-400">
                 {t('footer')}
@@ -849,7 +860,7 @@ function App() {
             </AnimatePresence>
           </div>
           <div className="flex items-center gap-5 mt-4 md:mt-0">
-            <img src="/images/FSI.png" alt="FSI emblem" className="h-20 w-auto object-contain" />
+            <img src="/images/student-entrepreneurship.png" alt="MIPT Student Entrepreneurship Office" className="h-20 w-auto object-contain" />
             <img src="/images/MIPT.png" alt="MIPT logo" className="h-20 w-auto object-contain" />
           </div>
           <a
