@@ -656,7 +656,7 @@ function App() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
-            src="/images/girl.jpg"
+            src="/images/hero.jpg"
             alt="SUP boarding"
             className="w-full h-full object-cover"
             onLoad={() => setHeroLoaded(true)}
@@ -803,7 +803,7 @@ function App() {
             </div>
             <div className="relative rounded-3xl overflow-hidden h-80 md:h-96 group">
               <img
-                src="images/hero.jpg"
+                src="images/girl.jpg"
                 alt="Girl on SUP board"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 onError={(e) => {
