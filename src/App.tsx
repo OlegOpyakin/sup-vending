@@ -342,6 +342,7 @@ const BoatIcon = ({ className }: { className?: string }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
     xmlns="http://www.w3.org/2000/svg"
+    transform="rotate(180)"
   >
     {/* Весло по центру */}
     <path d="M 0 -75 L 0 35" />
