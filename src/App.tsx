@@ -867,10 +867,20 @@ function App() {
               </span>
             </AnimatePresence>
           </div>
+
           <div className="flex items-center gap-5 mt-4 md:mt-0">
-            <img src="/images/stud.png" alt="MIPT Student Entrepreneurship Office" className="h-20 w-small object-contain" />
-            <img src="/images/MIPT.png" alt="MIPT logo" className="h-22 w-small object-contain" />
+            <img
+              src="/images/stud.png"
+              alt="MIPT Student Entrepreneurship Office"
+              className="md:h-40 md:w-auto h-auto w-auto max-w-[120px] object-contain"
+            />
+            <img
+              src="/images/MIPT.png"
+              alt="MIPT logo"
+              className="md:h-40 md:w-auto h-auto w-auto max-w-[120px] object-contain"
+            />
           </div>
+
           <a
             href="mailto:smartshadowofficial@gmail.com"
             className="mt-4 md:mt-0 text-blue-600 dark:text-blue-400 hover:underline"
