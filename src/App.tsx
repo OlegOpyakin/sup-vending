@@ -343,13 +343,21 @@ const BoatIcon = ({ className }: { className?: string }) => (
     strokeLinejoin="round"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M -12 -85 L 12 -85 M 0 -85 L 0 60" />
-    <path d="M -20 -60 Q -55 -80 -25 0" />
-    <path d="M 20 -60 Q 55 -80 25 0" />
-    <path d="M -60 10 C -50 0, -40 20, -30 10 C -20 0, -10 20, 0 10 C 10 0, 20 20, 30 10 C 40 0, 50 20, 60 10" />
-    <path d="M -18 35 Q -35 65 0 95" />
-    <path d="M 18 35 Q 35 65 0 95" />
-    <path d="M 0 65 Q 15 65 14 85 Q 0 98 -14 85 Q -15 65 0 65" />
+    {/* Весло по центру */}
+    <path d="M 0 -75 L 0 35" />
+    <path d="M -10 -75 L 10 -75" />
+
+    {/* Лопасть весла */}
+    <path d="M 0 35 Q 22 58 0 78 Q -22 58 0 35" />
+
+    {/* Контур сап-доски */}
+    <path d="M -38 -45 Q -58 -15 -42 45" />
+    <path d="M 38 -45 Q 58 -15 42 45" />
+    <path d="M -42 45 Q -25 85 0 92" />
+    <path d="M 42 45 Q 25 85 0 92" />
+
+    {/* Волна */}
+    <path d="M -65 10 C -52 0, -40 20, -28 10 C -16 0, -4 20, 8 10 C 20 0, 32 20, 44 10 C 56 0, 68 20, 80 10" />
   </svg>
 );
 
@@ -860,8 +868,8 @@ function App() {
             </AnimatePresence>
           </div>
           <div className="flex items-center gap-5 mt-4 md:mt-0">
-            <img src="/images/student-entrepreneurship.png" alt="MIPT Student Entrepreneurship Office" className="h-20 w-auto object-contain" />
-            <img src="/images/MIPT.png" alt="MIPT logo" className="h-20 w-auto object-contain" />
+            <img src="/images/stud.png" alt="MIPT Student Entrepreneurship Office" className="h-20 w-small object-contain" />
+            <img src="/images/MIPT.png" alt="MIPT logo" className="h-22 w-small object-contain" />
           </div>
           <a
             href="mailto:smartshadowofficial@gmail.com"
